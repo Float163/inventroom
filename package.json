@@ -1,8 +1,8 @@
 {
-  "name": "yaxys",
+  "name": "inventroom",
   "version": "0.0.1",
   "main": "index.js",
-  "repository": "git@github.com:devxup/yaxys.git",
+  "repository": "git@github.com:alevkon/inventroom.git",
   "author": "alevkon <alevkon@gmail.com>",
   "license": "MIT",
   "dependencies": {

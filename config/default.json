@@ -1,11 +1,11 @@
 {
-  "title": "Yaxys",
+  "title": "inventroom",
   "host": "127.0.0.1",
-  "port": 4000,
+  "port": 7000,
   "db": {
     "host": "127.0.0.1",
     "port": 5432,
-    "database": "yaxys",
+    "database": "inventroom",
     "user": "",
     "password": ""
   },

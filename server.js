@@ -1,19 +1,19 @@
 const config = require("config");
 const App = require(__dirname + "/core/classes/App");
 
-global.yaxys = new App();
-yaxys.listen(config.get("port"));
+global.inventroom = new App();
+inventroom.listen(config.get("port"));
 
-yaxys.init()
+inventroom.init()
   .then(() => {
-    yaxys.logger.info("==========================================");
-    yaxys.logger.info(`${config.get("title")} application started`);
-    yaxys.logger.info(`Port: ${config.get("port")}`);
-    yaxys.logger.info(`Environment: ${config.util.getEnv("NODE_ENV")}`);
-    yaxys.logger.info("==========================================");
+    inventroom.logger.info("==========================================");
+    inventroom.logger.info(`${config.get("title")} application started`);
+    inventroom.logger.info(`Port: ${config.get("port")}`);
+    inventroom.logger.info(`Environment: ${config.util.getEnv("NODE_ENV")}`);
+    inventroom.logger.info("==========================================");
   })
   .catch((err) => {
-    yaxys.logger.error("Failed to start");
-    yaxys.logger.error(err);
+    inventroom.logger.error("Failed to start");
+    inventroom.logger.error(err);
     process.exit();
   });

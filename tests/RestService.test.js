@@ -2,13 +2,13 @@ const RestService = require("../core/services/RestService");
 global._ = require("lodash");
 
 describe("RestService", () => {
-  let yaxysBuffer;
+  let inventroomBuffer;
 
   beforeAll(async() => {
-    yaxysBuffer = global.yaxys;
+    inventroomBuffer = global.inventroom;
 
     const adapterMethodsToEmulate = ["find", "findOne", "insert", "update"];
-    global.yaxys = {
+    global.inventroom = {
       db: _.reduce(adapterMethodsToEmulate, (memo, methodName) => {
         memo[methodName] = function() {
           return [methodName, ...arguments]
@@ -118,9 +118,9 @@ describe("RestService", () => {
   _.each(testCaseSets, (testCases, setKey) => {
     describe(setKey, () => {
       testCases.forEach(testCase => it(testCase.title, async() => {
-        const dbBuffer = yaxys.db;
+        const dbBuffer = inventroom.db;
         if (testCase.dbPatch) {
-          yaxys.db = Object.assign({}, yaxys.db, testCase.dbPatch);
+          inventroom.db = Object.assign({}, inventroom.db, testCase.dbPatch);
         }
 
         const promise = RestService[setKey](schemaKey)(testCase.ctx);
@@ -131,7 +131,7 @@ describe("RestService", () => {
         }
 
         if (testCase.dbPatch) {
-          yaxys.db = dbBuffer;
+          inventroom.db = dbBuffer;
         }
 
         expect(testCase.ctx.body).toStrictEqual(testCase.result);
@@ -140,6 +140,6 @@ describe("RestService", () => {
   });
 
   afterAll(async() => {
-    global.yaxys = yaxysBuffer;
+    global.inventroom = inventroomBuffer;
   });
 });

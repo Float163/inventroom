@@ -2,7 +2,7 @@ module.exports = {
   findOne(schemaKey) {
     return async (ctx) => {
       if (!ctx.params.id) { ctx.throw(400, "id is required"); }
-      const instance =  await yaxys.db.findOne(schemaKey, { id: ctx.params.id });
+      const instance =  await inventroom.db.findOne(schemaKey, { id: ctx.params.id });
       if (!instance) { ctx.throw(404, `${schemaKey} #${ctx.params.id} not found`); }
       ctx.body = instance;
     }
@@ -33,7 +33,7 @@ module.exports = {
         }
       });
 
-      ctx.body = await yaxys.db.find(schemaKey, filter, options);
+      ctx.body = await inventroom.db.find(schemaKey, filter, options);
     }
   },
 
@@ -41,13 +41,13 @@ module.exports = {
     return async (ctx) => {
       if (!ctx.params.id) { ctx.throw(400, "id is required"); }
 
-      ctx.body = await yaxys.db.update(schemaKey, ctx.params.id, ctx.request.body);
+      ctx.body = await inventroom.db.update(schemaKey, ctx.params.id, ctx.request.body);
     };
   },
 
   create(schemaKey) {
     return async (ctx) => {
-      ctx.body = await yaxys.db.insert(schemaKey, ctx.request.body);
+      ctx.body = await inventroom.db.insert(schemaKey, ctx.request.body);
     };
   }
 };
