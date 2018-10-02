@@ -59,7 +59,6 @@ module.exports = class App extends Koa {
 
     this.pageRouter = new PageRouter();
 
-
     this.use(bodyParser());
     this.use(this.apiRouter.routes());
     this.use(this.pageRouter.routes());

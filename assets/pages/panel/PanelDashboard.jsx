@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import InventroomClue, { Clue, queries } from "../../services/InventroomClue";
 import { connect } from "react-redux";
+import Button from '@material-ui/core/Button';
 
 const propsToSessionClue = props => ({ identity: "session", query: queries.FIND });
 const sessionsSelector = InventroomClue.selectors.byClue(propsToSessionClue);
@@ -41,7 +42,7 @@ export default class PanelDashboard extends Component {
     return <div>
       <h1>Dashboard</h1>
 
-      <button onClick={ this.onCreateSession }>Create session</button>
+      <Button variant="contained" color="primary" onClick={ this.onCreateSession }>Create session 2</Button>
 
       <h4>this.props.sessions</h4>
       <div style={{ whiteSpace: "pre" }}>
@@ -53,4 +54,6 @@ export default class PanelDashboard extends Component {
       </div>
     </div>
   }
-} 
+}
+
+
