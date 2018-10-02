@@ -12,9 +12,6 @@ inventroom.init()
       },
       get_sql() {
         inventroom.logger.error("Not implemented yet");
-      },
-      create_operator() {
-        inventroom.logger.error("Not implemented yet");
       }
     };
 

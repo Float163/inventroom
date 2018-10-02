@@ -1,0 +1,16 @@
+{
+  "plugins": ["transform-decorators-legacy"],
+  "presets": [
+    ["env", { "modules": false, "targets": { "browsers": ["last 2 versions", "safari >= 7"] } }],
+    "react",
+    "stage-0"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["transform-decorators-legacy"]
+    },
+    "test": {
+      "presets": ["env", "react", "stage-0"]
+    }
+  }
+}
