@@ -5,12 +5,16 @@ module.exports = {
         type: "integer"
       },
       name: {
-        type: "string",
-        format: "email"
+        type: "string"
       },
       vkId: {
-        type: "integer",
-        format: "email"
+        type: "integer"
+      },
+      avatar: {
+        type: "string"
+      },
+      customInfo: {
+        type: "object"
       }
     },
     required: ["vkId"]

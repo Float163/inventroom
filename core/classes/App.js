@@ -35,7 +35,9 @@ module.exports = class App extends Koa {
     // registering their schemas in database, and their API methods in router
     _.each(this.models, (model, key) => {
       _.each(model.api || {}, (handlers, route) => {
-        this.db.registerSchema(key, model.schema);
+        if (model.schema) {
+          this.db.registerSchema(key, model.schema);
+        }
 
         let method = "get";
         if (/^(get|post|put|delete)\s/i.test(route)) {

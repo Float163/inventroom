@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
 import InventroomClue, { Clue, queries } from "../../services/InventroomClue";
+import { meSelector } from "../../services/Me";
 import { connect } from "react-redux";
+import Bar from "../../components/Bar.jsx";
 import Button from '@material-ui/core/Button';
 
 const propsToSessionClue = props => ({ identity: "session", query: queries.FIND });
@@ -15,7 +17,8 @@ const createdSessionsSelector = InventroomClue.selectors.byClue(
 @connect(
   (state, props) => ({
     sessions: sessionsSelector(state, props),
-    createdSessions: createdSessionsSelector(state, props)
+    createdSessions: createdSessionsSelector(state, props),
+    me: meSelector(state)
   }),
   {
     loadSessions: InventroomClue.actions.byClue,
@@ -40,10 +43,15 @@ export default class PanelDashboard extends Component {
 
   render() {
     return <div>
+      <Bar />
       <h1>Dashboard</h1>
 
       <Button variant="contained" color="primary" onClick={ this.onCreateSession }>Create session 2</Button>
 
+      <h4>this.props.me</h4>
+      <div style={{ whiteSpace: "pre" }}>
+        { JSON.stringify(this.props.me, null, 2) }
+      </div>
       <h4>this.props.sessions</h4>
       <div style={{ whiteSpace: "pre" }}>
         { JSON.stringify(this.props.sessions, null, 2) }

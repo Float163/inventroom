@@ -1,4 +1,4 @@
-import ReduxClue, { Clue as rClue, queries as rQueries} from "redux-clue"
+import ReduxClue, { Clue as rClue, queries as rQueries} from "redux-clue";
 
 export default ReduxClue({
   storeKey: "InventroomClue",
@@ -6,7 +6,7 @@ export default ReduxClue({
   apiPluralize: false,
   idAttribute: "id",
   models: [
-    "user", "session"
+    "user", "session", "auth"
   ]
 });
 

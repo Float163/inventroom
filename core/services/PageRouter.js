@@ -42,7 +42,7 @@ module.exports = class PageRouter extends Router {
     const store = createStore(combineReducers({
       "InventroomClue": InventroomClue.reducer
     }));
-    const routesElement = routes(store);
+    const routesElement = routes(store, UtilService.constants);
 
     const contents = renderToString(
       React.createElement(StaticRouter, { location: ctx.req.url }, routesElement)
@@ -67,6 +67,7 @@ module.exports = class PageRouter extends Router {
   <body ${helmet.bodyAttributes.toString()}>
     <div id="root">${ contents }</div>
   </body>
+  <script src="/api/constants" type="text/javascript"></script>
   <script src="/bundle.js"></script>
 </html>
 `;

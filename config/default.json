@@ -9,9 +9,20 @@
     "user": "",
     "password": ""
   },
+  "jwt": {
+    "lifetime": 86340,
+    "lifetimeCookiePadding": 10,
+    "secret": "SOME_RANDOM_SECRET"
+  },
+  "vk": {
+    "appId": 6709295,
+    "secret": "",
+    "v": 5.74,
+    "redirectURI": "http://inventroom.local:7000/login"
+  },
   "logger": {
     "level": "info",
     "colorize": true
   },
-  "timezone": "Europe/Brussels"
+  "timezone": "Europe/Moscow"
 }
