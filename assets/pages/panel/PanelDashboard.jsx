@@ -60,12 +60,12 @@ export default class PanelDashboard extends Component {
               </TableRow>
           </TableHead>
           <TableBody>
-              {Array.from(this.props.sessions.data).map(session => {
+              {Array.from(this.props.sessions.data).map((session, index) => {
                   return (
-                      <TableRow key={1}>
+                      <TableRow key={index}>
                           <TableCell component="th" scope="row">{session.name}</TableCell>
                           <TableCell>{session.description}</TableCell>
-                          <TableCell>  <Button variant="contained" color="secondary" style={{marginTop: 2 + 'px'}}> Action </Button>  </TableCell>
+                          <TableCell>  <Button variant="contained" color="secondary" style={{marginTop: 2}}> Action </Button>  </TableCell>
                       </TableRow>
                   )
               })}
@@ -77,18 +77,19 @@ export default class PanelDashboard extends Component {
     return <div>
       <Bar />
       <h1>Dashboard</h1>
-        {(  this.props.sessions && this.props.sessions.success) ?
-                this.renderSession()
-            : (this.props.sessions && this.props.sessions.pending) ?
-                <Paper>
+        {
+            (this.props.sessions && this.props.sessions.success)
+            ? this.renderSession()
+            : (this.props.sessions && this.props.sessions.pending)
+            ? <Paper>
                     <h3>Load data</h3>
                     <p>Loading</p>
-                </Paper>
-            : (this.props.sessions && this.props.sessions.error) ?
-                <Paper>
+              </Paper>
+            : (this.props.sessions && this.props.sessions.error)
+            ? <Paper>
                   <h3>Error</h3>
                   <p>Error info:</p>
-                </Paper>
+              </Paper>
             : ''
         }
 
